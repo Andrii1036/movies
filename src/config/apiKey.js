@@ -1,0 +1,1 @@
+export const apiKey=process.env.REACT_APP_MOVIE_EDB_API_KEY;

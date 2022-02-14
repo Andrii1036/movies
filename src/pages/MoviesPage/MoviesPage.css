@@ -1,0 +1,9 @@
+
+.homePage_content{
+    display: flex;
+    align-items: flex-start;
+    column-gap: 20px;
+}
+.homePage_movies{
+
+}

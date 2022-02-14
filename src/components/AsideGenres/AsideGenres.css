@@ -1,0 +1,15 @@
+.asideGenres{
+    display: flex;
+    flex-direction: column;
+    min-width: 200px;
+    background: linear-gradient(to bottom right, rgb(40, 40, 40),rgba(40, 40, 40,0.7));
+    border-radius: 10px;
+    height: auto;
+}
+.asideGenres h3{
+    text-align: center;
+    color: gold;
+    margin: 10px 0 5px;
+    text-shadow: 4px 3px 0 black;
+    font-size: 20px;
+}

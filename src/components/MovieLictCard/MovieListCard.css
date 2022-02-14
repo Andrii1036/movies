@@ -1,0 +1,65 @@
+.movieListCard {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 300px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: -5px -5px 5px -5px rgba(34, 60, 80, 0.6) inset;
+
+}
+
+.movieListCard h2 {
+    margin: 0;
+}
+
+.movieListCard a {
+    text-decoration: none;
+}
+
+.movieListCard_title {
+    width: 100%;
+    height: 50px;
+    background: linear-gradient(to bottom right, rgb(40, 40, 40), rgba(40, 40, 40, 0.7));
+    border-bottom-right-radius: 5px;
+    padding-left: 20px;
+    color: white;
+    display: flex;
+    align-items: center;
+}
+
+.movieListCard_body {
+    display: flex;
+    height: 100%;
+    position: relative;
+}
+
+.movieListCard_image {
+    min-width: 180px;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.movieListCard_subtitle {
+    padding: 0 20px;
+    font-size: 18px;
+}
+.movieListCard_subtitle span{
+    margin-left: 5px;
+    text-decoration: underline;
+}
+.movieListCard_subtitle a{
+    color: #ff6c2d;
+}
+.release_date{
+    padding-left: 30px;
+    margin: 0;
+    color: rgb(69, 69, 69);
+    position: absolute;
+    right: 20px;
+    bottom: 10px;
+    background: url("../../../image/calendar.png") no-repeat left;
+    background-size: contain;
+}
