@@ -4,7 +4,7 @@
     height: 100vh;
     overflow: hidden;
     overflow-y: scroll;
-    padding: 250px 20px 0;
+    padding: 120px 20px 0;
 }
 .contentWrapper {
     max-width: 1200px;

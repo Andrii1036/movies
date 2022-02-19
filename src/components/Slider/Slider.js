@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 
 import "./Slider.css"
@@ -11,7 +11,7 @@ const Slider = () => {
     const {status, error, sliderItem} = useSelector(state => state.slider)
     const dispatch = useDispatch();
 
-    let sliderPosition = 0
+    let [sliderPosition,setSliderPosition] = useState(0)
     let count = sliderItem.length
 
     const sliderNext = (side) => {
@@ -34,13 +34,12 @@ const Slider = () => {
         }
 
         if (side === '-' && prevButton.disabled === false) {
-            sliderPosition += width
+            setSliderPosition(sliderPosition += width)
             nextButton.disabled = false
         } else if (side === '+' && nextButton.disabled === false) {
-            sliderPosition -= width
+            setSliderPosition(sliderPosition -= width)
             prevButton.disabled = false
         }
-
         sliderContainer.style.left = `${sliderPosition}px`
     }
 

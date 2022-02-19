@@ -5,5 +5,7 @@
     column-gap: 20px;
 }
 .homePage_movies{
-
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 }

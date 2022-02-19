@@ -4,15 +4,17 @@ import {moviesService} from "../services";
 const initialState = {
     movie: [],
     status: null,
-    error: null
+    error: null,
+    totalPages:null,
+    singleMovie:{}
 }
 
 export const getMovie = createAsyncThunk(
     'movie/getMovie',
-    async (_, {rejectWithValue}) => {
+    async ({pageNumber,primary_release_year}, {rejectWithValue}) => {
         try {
-            const movieList = await moviesService.getAll()
-            return movieList.results
+            const movieList = await moviesService.getAll({pageNumber,primary_release_year})
+            return movieList
         } catch (e) {
             return rejectWithValue(e.message)
         }
@@ -21,15 +23,38 @@ export const getMovie = createAsyncThunk(
 
 export const getMovieByGenre = createAsyncThunk(
     'movie/getMovieByGenre',
-    async (genre, {rejectWithValue}) => {
+    async ({genre,pageNumber}, {rejectWithValue}) => {
         try {
-            const movieListByGenre = await moviesService.getAll('',genre)
-            return movieListByGenre.results
+            const movieListByGenre = await moviesService.getAll({genre,pageNumber})
+            return movieListByGenre
         } catch (e) {
             return rejectWithValue(e.message)
         }
     }
 );
+export const getById=createAsyncThunk(
+    'movie/getById',
+    async({id,append_to_response},{rejectWithValue})=>{
+        try {
+            const movieById=await moviesService.getById({id,append_to_response})
+            return movieById
+        }catch (e) {
+            return rejectWithValue(e.message)
+        }
+    }
+)
+
+export const getByYear=createAsyncThunk(
+    'movie/getByYear',
+    async ({primary_release_year},{rejectWithValue})=>{
+            try {
+                const moviesByYear=await moviesService.getAll({primary_release_year})
+                return moviesByYear
+            }catch (e) {
+                return rejectWithValue(e.message)
+            }
+    }
+)
 
 export const movieSlice = createSlice({
     name: 'movie',
@@ -43,12 +68,25 @@ export const movieSlice = createSlice({
         [getMovie.fulfilled]: (state, action) => {
             state.status = 'done'
             state.error = null
-            state.movie = action.payload
+            state.movie = action.payload.results
+            state.totalPages=action.payload.total_pages
         },
         [getMovieByGenre.fulfilled]:(state,action)=>{
             state.status='done'
             state.error=null
-            state.movie=action.payload
+            state.movie=action.payload.results
+            state.totalPages=action.payload.total_pages
+        },
+        [getById.fulfilled]:(state,action)=>{
+            state.status='done'
+            state.error=null
+            state.singleMovie=action.payload
+        },
+        [getByYear.fulfilled]:(state,action)=>{
+            state.status = 'done'
+            state.error = null
+            state.movie = action.payload.results
+            state.totalPages=action.payload.total_pages
         }
     }
 });

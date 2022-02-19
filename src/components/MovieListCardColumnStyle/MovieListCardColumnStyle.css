@@ -1,0 +1,32 @@
+.movieListCardColumnStyle{
+    width: 200px;
+}
+
+.movieListCardColumnStyle_image{
+    width: 200px;
+    height: 300px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+.movieListCardColumnStyle h2{
+    width: 100%;
+    background: linear-gradient(to bottom right, rgb(40, 40, 40), rgba(40, 40, 40, 0.7));
+    margin: 0;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    height: 40px;
+    padding: 5px;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: all 500ms;
+
+}
+.movieListCardColumnStyle h2:hover{
+    white-space: normal;
+    overflow:visible;
+    text-shadow: #151212 0 0 5px, #592525 0 0 10px, #362727 0 0 15px, #2a4f32 0 0 20px, #fff52d 0 0 30px, #ff542d 0 0 40px, #ff6c2d 0 0 50px;
+    transition: all 500ms;
+}

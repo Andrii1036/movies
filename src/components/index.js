@@ -5,4 +5,8 @@ export * from './GenresItem/GenresItem';
 export * from './Search/Search';
 export * from './Slider/Slider';
 export * from './SliderItem/SliderItem';
-export * from './MovieLictCard/MovieListCard'
+export * from './MovieLictCard/MovieListCard';
+export * from './NavigationButton/NavigationButton';
+export * from './GenresItemName/GenresItemName';
+export * from './Filter/Filter';
+export * from './RenderStyle/RenderStyle'

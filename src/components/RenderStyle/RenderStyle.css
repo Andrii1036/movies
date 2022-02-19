@@ -1,0 +1,45 @@
+.renderStyle{
+    display: flex;
+    width: 100px;
+    height: 35px;
+    column-gap: 10px;
+}
+.renderStyle_row{
+    display: flex;
+    width: 50%;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+}
+.renderStyle_row p{
+    width: 100%;
+    background: linear-gradient(to bottom right, rgb(236, 39, 39), rgba(190, 227, 26, 0.7));
+    height: 10px;
+    padding: 0;
+    margin: 0;
+    border-radius: 5px;
+    border: 1px solid black;
+
+}
+.renderStyle_column{
+    display: flex;
+    width: 50%;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    cursor: pointer;
+    gap: 3px;
+}
+.renderStyle_column p{
+    width: 13px;
+    background: linear-gradient(to bottom right, rgb(236, 39, 39), rgba(190, 227, 26, 0.7));
+    height: 9px;
+    padding: 0;
+    margin: 0;
+    border-radius: 2px;
+    border: 1px solid black;
+}
+
+.renderStyle_column:hover p,.renderStyle_row:hover p{
+    background: linear-gradient(to bottom right, rgb(166, 204, 38), rgba(227, 26, 26, 0.7));
+
+}

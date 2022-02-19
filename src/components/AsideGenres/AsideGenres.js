@@ -10,11 +10,6 @@ import {getGenreList} from "../../store";
 const AsideGenres = () => {
 
     const{status,error,genreList}=useSelector(state => state.genreList)
-    const dispatch=useDispatch();
-
-    useEffect(()=>{
-        dispatch(getGenreList())
-    },[])
 
     return (
         <aside className={'asideGenres'}>

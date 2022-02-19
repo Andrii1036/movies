@@ -3,7 +3,7 @@ import {Outlet} from "react-router-dom";
 
 import './MoviesPage.css'
 
-import {AsideGenres, Slider} from "../../components";
+import {AsideGenres, Filter, NavigationButton, Slider} from "../../components";
 
 const MoviesPage = () => {
     return (
@@ -11,7 +11,11 @@ const MoviesPage = () => {
             <Slider/>
             <div className={'homePage_content'}>
                 <AsideGenres/>
-                <Outlet/>
+                <div className={'homePage_movies'}>
+                    <Filter/>
+                    <NavigationButton/>
+                    <Outlet/>
+                </div>
             </div>
         </>
     );
