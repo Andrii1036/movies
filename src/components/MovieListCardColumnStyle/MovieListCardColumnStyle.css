@@ -1,9 +1,11 @@
 .movieListCardColumnStyle{
-    width: 200px;
+    width: 220px;
+    box-shadow: 0 3px 8px rgb(0 0 0 / 70%);
+    border-radius: 5px;
 }
 
 .movieListCardColumnStyle_image{
-    width: 200px;
+    width: 100%;
     height: 300px;
     background-repeat: no-repeat;
     background-position: center;
@@ -29,4 +31,9 @@
     overflow:visible;
     text-shadow: #151212 0 0 5px, #592525 0 0 10px, #362727 0 0 15px, #2a4f32 0 0 20px, #fff52d 0 0 30px, #ff542d 0 0 40px, #ff6c2d 0 0 50px;
     transition: all 500ms;
+}
+.stars{
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
 }

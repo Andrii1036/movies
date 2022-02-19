@@ -1,33 +1,27 @@
 import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {Link, useLocation, useSearchParams} from "react-router-dom";
+import {Link, useLocation, useNavigate} from "react-router-dom";
 
 import './FilmDetailPage.css'
 
-import {getById, getByYear} from "../../store";
+import {getById} from "../../store";
 import {imageBaseUrl} from "../../config/urls";
 import {GenresItemName} from "../../components";
 
 const FilmsDetailsPage = () => {
 
-    const {singleMovie} = useSelector(state => state.movieList)
-    const {backdrop_path, poster_path, title, release_date, genres, overview, credits} = singleMovie
+    const {singleMovie, singleMovieStatus} = useSelector(state => state.movieList)
+    const {backdrop_path, poster_path, title, release_date, genres, overview, credits, original_title,
+        runtime,production_countries} = singleMovie
     const dispatch = useDispatch()
-
-    const [genresId, setGenresId] = useState([])
-    const [director,setDirector]=useState({})
-    const [year,setYear]=useState()
-    // const year =
+    const navigate=useNavigate()
+    const [data, setData] = useState({
+        genresId: [],
+        director: {},
+        year: ''
+    })
 
     const {state: id} = useLocation()
-
-    const [searchParams,setSearchParams]=useSearchParams()
-
-    const getGenresId = () => {
-        let arr = []
-        genres.map(item => arr.push(item.id))
-        setGenresId(arr)
-    }
 
     const addBackground = () => {
         const container = document.getElementById('filmMainInfo')
@@ -40,49 +34,52 @@ const FilmsDetailsPage = () => {
         dispatch(getById({id, append_to_response: 'videos,reviews,images,credits'}))
     }, [])
 
-    useEffect(()=>{
-        if(release_date){
-            setYear(release_date.split('-')[0])
-        }
-    },[release_date])
-
     useEffect(() => {
-        if (backdrop_path) {
+        if (singleMovieStatus === 'done') {
+            let directorData = credits.crew.find(item => item.job === 'Director')
+            let genresArray = []
+
+            genres.map(item => genresArray.push(item.id))
+
+            setData({
+                ...data,
+                year: release_date.split('-')[0],
+                director: directorData,
+                genresId: genresArray,
+            })
             addBackground()
         }
-    }, [backdrop_path])
+    }, [singleMovieStatus])
 
-    useEffect(() => {
-        if (genres) {
-            getGenresId()
-        }
-    }, [genres])
-
-    useEffect(()=>{
-        if(credits){
-            setDirector(credits.crew.find(item=>item.job==='Director'))
-        }
-    },[credits])
 
     return (
         <div className={'filmDetailPage'}>
             {console.log(singleMovie)}
             <div id={'filmMainInfo'} className={'filmMainInfo'}>
                 <div className={'filmMainInfo_fog'}>
-                    <div id={'filmMainInfo_image'} className={'filmMainInfo_image'}></div>
+                    <div id={'filmMainInfo_image'} className={'filmMainInfo_image'}>
+                        <p onClick={()=>{navigate(-1)}}>{'\u276e'} {'\u00a0'}На попередню сторінку</p>
+                    </div>
                     <div id={'filmInfo'} className={'filmInfo'}>
-                        {release_date && <h2>{title}
-                            <Link to={`/?year=${year}`} >
-                                <span>({release_date.split('-')[0]})</span>
+                        <h2>{title}
+                            <Link to={`/?year=${data.year}`}>
+                                <span>({data.year})</span>
                             </Link>
-                        </h2>}
-                        <GenresItemName genre_ids={genresId}/>
-                        {credits &&
-                            <p>
-                                Режисер:{director.name}
-                            </p>
-                        }
-                        <p>{overview}</p>
+                        </h2>
+                        <GenresItemName genre_ids={data.genresId}/>
+                        <p>
+                            Оригінальна назва:<span> {'\u0020'}"{original_title}"</span>
+                        </p>
+                        <p>
+                            Країна:{production_countries && production_countries.map(item=><span key={item.name}>{'\u0020'}{item.name},</span>)}
+                        </p>
+                        <p>
+                            Режисер:<span>{'\u0020'}{data.director.name}</span>
+                        </p>
+                        <p>
+                            Тривалість: <span>{runtime} хв.</span>
+                        </p>
+                        <p>{'\u00a0\u00a0\u00a0\u00a0\u00a0'}{overview}</p>
                     </div>
                 </div>
             </div>

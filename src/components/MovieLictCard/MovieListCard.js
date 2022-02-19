@@ -6,10 +6,10 @@ import './MovieListCard.css'
 
 import {imageBaseUrl} from "../../config/urls";
 import {GenresItemName} from "../GenresItemName/GenresItemName";
+import StarRatings from "react-star-ratings/build/star-ratings";
 
 const MovieListCard = ({data}) => {
-    // console.log(data);
-    const {title, id, poster_path, overview, release_date, genre_ids} = data;
+    const {title, id, poster_path, overview, release_date, genre_ids,vote_average} = data;
     const filmName = title.split(' ').join('')
     let year ='-'
     if(release_date){
@@ -26,6 +26,14 @@ const MovieListCard = ({data}) => {
             <Link to={`/movie/${transliterate(filmName)}-${id}`} state={id}>
                 <div className={'movieListCard_title'}>
                     <h2>{title}</h2>
+                   <StarRatings
+                       numberOfStars={10}
+                       starDimension={'19px'}
+                       starSpacing={'2px'}
+                       rating={vote_average}
+                       starRatedColor={'gold'}
+                       starEmptyColor={'rgb(183, 181, 183)'}
+                   />
                 </div>
             </Link>
             <div className={'movieListCard_body'}>

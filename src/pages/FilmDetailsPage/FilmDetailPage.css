@@ -26,6 +26,24 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+    position: relative;
+    margin-bottom: 40px;
+}
+.filmMainInfo_image p{
+    text-align: center;
+    font-size: 15px;
+    font-weight: bold;
+    color: white;
+    position: absolute;
+    bottom: -45px;
+    right: 50%;
+    transform: translateX(50%);
+    margin: 0;
+    width: 100%;
+    cursor: pointer;
+}
+.filmMainInfo_image p:hover{
+    color: gold;
 }
 .filmInfo{
     color: white;
@@ -35,4 +53,14 @@
 }
 .filmInfo h2 span{
     margin-left: 10px;
+}
+.filmInfo>p{
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+.filmInfo>p>span{
+    font-weight: normal;
+}
+.filmInfo p:last-child{
+    line-height: 2;
 }

@@ -6,7 +6,8 @@ const initialState = {
     status: null,
     error: null,
     totalPages:null,
-    singleMovie:{}
+    singleMovie:{},
+    singleMovieStatus:null
 }
 
 export const getMovie = createAsyncThunk(
@@ -77,8 +78,12 @@ export const movieSlice = createSlice({
             state.movie=action.payload.results
             state.totalPages=action.payload.total_pages
         },
+        [getById.pending]: (state) => {
+            state.singleMovieStatus = 'pending'
+            state.error = 'null'
+        },
         [getById.fulfilled]:(state,action)=>{
-            state.status='done'
+            state.singleMovieStatus='done'
             state.error=null
             state.singleMovie=action.payload
         },
