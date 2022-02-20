@@ -8,7 +8,9 @@ import {getSliderItem} from "../../store";
 
 const Slider = () => {
 
-    const {status, error, sliderItem} = useSelector(state => state.slider)
+    const {status,sliderItem} = useSelector(state => state.slider)
+    const{language}=useSelector(state => state.localChange)
+
     const dispatch = useDispatch();
 
     let [sliderPosition,setSliderPosition] = useState(0)
@@ -61,8 +63,8 @@ const Slider = () => {
     }
 
     useEffect(() => {
-        dispatch(getSliderItem())
-    }, [])
+        dispatch(getSliderItem({language}))
+    }, [language])
 
     useEffect(() => {
         let runSlider

@@ -1,20 +1,21 @@
 import React, {useEffect} from 'react';
-import {Routes,Route} from "react-router-dom";
+import {Routes, Route} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
 
 import './App.css'
 
 import {Header} from './components';
 import {FilmsDetailsPage, GenresMoviePage, MoviesListPage, MoviesPage, TVshowPage} from "./pages";
-import {useDispatch} from "react-redux";
 import {getGenreList} from "./store";
 
 const App = () => {
 
-    const dispatch=useDispatch();
+    const {language} = useSelector(state => state.localChange)
+    const dispatch = useDispatch();
 
-    useEffect(()=>{
-        dispatch(getGenreList())
-    },[])
+    useEffect(() => {
+        dispatch(getGenreList({language}))
+    }, [language])
 
     return (
         <div className={'mainWrapper'}>

@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 
 import './Header.css'
 
-import {Search} from "../Search/Search";
+import {ChangeLanguage, Search} from "../index";
 
 const showUserMenu = () => {
     const menu = document.getElementById('userMenu')
@@ -29,6 +29,7 @@ const Header = () => {
                     <Link to={'/TVshow'}><p className={'pageSwitch'} onClick={addActiveClass}>ТВ шоу</p></Link>
                 </div>
                 <div className={'header_rightSide'}>
+                    <ChangeLanguage/>
                     <Search/>
                     <div className={"user"}>
                         <p>mt10-36</p>

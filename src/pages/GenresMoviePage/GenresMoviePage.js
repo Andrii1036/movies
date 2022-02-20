@@ -3,14 +3,15 @@ import {useLocation, useParams, useSearchParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux"
 
 import {getMovieByGenre} from "../../store";
-import {MoviesList, NavigationButton} from "../../components";
-import {changeYear, pageFromParams, restartPage} from "../../store/local.slice";
+import {MoviesList} from "../../components";
+import {pageFromParams, restartPage} from "../../store/local.slice";
 
 
 const GenresMoviePage = () => {
 
     const {movie} = useSelector(state => state.movieList)
     const {filmByYear} = useSelector(state => state.localChange)
+    const{language}=useSelector(state => state.localChange)
     const dispatch = useDispatch()
 
     let [searchParams, setSearchParams] = useSearchParams()
@@ -32,8 +33,8 @@ const GenresMoviePage = () => {
         if (page === null) {
             dispatch(restartPage())
         }
-        dispatch(getMovieByGenre({genre: genreId, pageNumber: page, primary_release_year: filmByYear}))
-    }, [genre, page, filmByYear]);
+        dispatch(getMovieByGenre({genre: genreId, pageNumber: page, primary_release_year: filmByYear,language}))
+    }, [genre, page, filmByYear,language]);
 
     useEffect(() => {
         if (page) {

@@ -9,9 +9,9 @@ const initialState = {
 
 export const getGenreList = createAsyncThunk(
     'genre/getGenreList',
-    async (_, {rejectWithValue}) => {
+    async ({language}, {rejectWithValue}) => {
         try {
-            const genreList = await genreService.getAll();
+            const genreList = await genreService.getAll({language});
             return genreList
         } catch (e) {
 

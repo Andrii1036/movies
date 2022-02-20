@@ -3,7 +3,8 @@ import {createSlice} from "@reduxjs/toolkit";
 const initialState = {
     pageNumber: 1,
     renderStyle: 'row',
-    filmByYear: null
+    filmByYear: null,
+    language:'en'
 }
 
 export const localChangeSlice = createSlice({
@@ -31,13 +32,16 @@ export const localChangeSlice = createSlice({
         changeYear:(state,action)=>{
             state.filmByYear=action.payload
             console.log(action.payload);
+        },
+        changeLanguage :(state,action)=>{
+            state.language=action.payload
         }
 
     }
 })
 
 export const {
-    nextPage, prevPage, restartPage, pageFromParams, rowStyle,columnStyle,changeYear
+    nextPage, prevPage, restartPage, pageFromParams, rowStyle,columnStyle,changeYear,changeLanguage
 } = localChangeSlice.actions
 
 const localChangeReducer = localChangeSlice.reducer

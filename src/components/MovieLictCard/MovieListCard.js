@@ -41,7 +41,7 @@ const MovieListCard = ({data}) => {
                 <div className={'movieListCard_subtitle'}>
                     <p><strong>Рік:{'\u0020'}</strong>{year}</p>
                     <GenresItemName genre_ids={genre_ids}/>
-                    <p>{'\u0020'}{overview}</p>
+                    <p>{'\u00a0\u00a0\u00a0\u00a0\u00a0'}{overview}</p>
                     <p className={'release_date'}>{release_date}</p>
                 </div>
             </div>

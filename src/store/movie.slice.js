@@ -1,4 +1,5 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
+
 import {moviesService} from "../services";
 
 const initialState = {
@@ -12,9 +13,9 @@ const initialState = {
 
 export const getMovie = createAsyncThunk(
     'movie/getMovie',
-    async ({pageNumber,primary_release_year}, {rejectWithValue}) => {
+    async ({pageNumber,primary_release_year,language}, {rejectWithValue}) => {
         try {
-            const movieList = await moviesService.getAll({pageNumber,primary_release_year})
+            const movieList = await moviesService.getAll({pageNumber,primary_release_year,language})
             return movieList
         } catch (e) {
             return rejectWithValue(e.message)
@@ -24,9 +25,9 @@ export const getMovie = createAsyncThunk(
 
 export const getMovieByGenre = createAsyncThunk(
     'movie/getMovieByGenre',
-    async ({genre,pageNumber,primary_release_year}, {rejectWithValue}) => {
+    async ({genre,pageNumber,primary_release_year,language}, {rejectWithValue}) => {
         try {
-            const movieListByGenre = await moviesService.getAll({genre,pageNumber,primary_release_year})
+            const movieListByGenre = await moviesService.getAll({genre,pageNumber,primary_release_year,language})
             return movieListByGenre
         } catch (e) {
             return rejectWithValue(e.message)
@@ -35,9 +36,9 @@ export const getMovieByGenre = createAsyncThunk(
 );
 export const getById=createAsyncThunk(
     'movie/getById',
-    async({id,append_to_response},{rejectWithValue})=>{
+    async({id,append_to_response,language},{rejectWithValue})=>{
         try {
-            const movieById=await moviesService.getById({id,append_to_response})
+            const movieById=await moviesService.getById({id,append_to_response,language})
             return movieById
         }catch (e) {
             return rejectWithValue(e.message)
@@ -47,9 +48,9 @@ export const getById=createAsyncThunk(
 
 export const getByYear=createAsyncThunk(
     'movie/getByYear',
-    async ({primary_release_year},{rejectWithValue})=>{
+    async ({primary_release_year,language},{rejectWithValue})=>{
             try {
-                const moviesByYear=await moviesService.getAll({primary_release_year})
+                const moviesByYear=await moviesService.getAll({primary_release_year,language})
                 return moviesByYear
             }catch (e) {
                 return rejectWithValue(e.message)

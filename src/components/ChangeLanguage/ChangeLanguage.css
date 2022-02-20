@@ -1,0 +1,45 @@
+.languageWrapper{
+    position: relative;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+.languageVariable{
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 62px;
+    right: 0;
+    background-color: rgba(0,0,0,0.7);
+    width: 150px;
+}
+.languageVariable p{
+    padding-left: 40px;
+}
+.languageVariable p:hover{
+ color: gold;
+}
+.active{
+    display: flex;
+}
+.languageSwitcher{
+    margin-right: 15px;
+    height: 100%;
+    width: 170px;
+    padding-left: 40px;
+    display: flex;
+    background: no-repeat 10px center;
+    background-size: contain;
+}
+#uk{
+    background: url("../../../image/flag-uk.png") no-repeat 10px center;
+    background-size: contain;
+}
+#en{
+    background: url("../../../image/flag-en.png") no-repeat 10px center;
+    background-size: contain;
+}
+#ru{
+    background: url("../../../image/flag-ru.png") no-repeat 10px center;
+    background-size: contain;
+}

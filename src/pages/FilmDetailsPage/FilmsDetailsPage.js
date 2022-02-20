@@ -12,10 +12,12 @@ import {changeYear} from "../../store/local.slice";
 const FilmsDetailsPage = () => {
 
     const {singleMovie, singleMovieStatus} = useSelector(state => state.movieList)
+    const{language}=useSelector(state => state.localChange)
     const {backdrop_path, poster_path, title, release_date, genres, overview, credits, original_title,
         runtime,production_countries} = singleMovie
     const dispatch = useDispatch()
     const navigate=useNavigate()
+
     const [data, setData] = useState({
         genresId: [],
         director: {},
@@ -32,8 +34,8 @@ const FilmsDetailsPage = () => {
     }
 
     useEffect(() => {
-        dispatch(getById({id, append_to_response: 'videos,reviews,images,credits'}))
-    }, [])
+        dispatch(getById({id, append_to_response: 'videos,reviews,images,credits',language}))
+    }, [language])
 
     useEffect(() => {
         if (singleMovieStatus === 'done') {

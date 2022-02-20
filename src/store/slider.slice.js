@@ -9,9 +9,9 @@ const initialState = {
 
 export const getSliderItem = createAsyncThunk(
     'slider/getSliderItem',
-    async (_, {rejectWithValue}) => {
+    async ({language}, {rejectWithValue}) => {
         try {
-            const sliderItems = await moviesService.getTopRated();
+            const sliderItems = await moviesService.getTopRated({language});
             return sliderItems.results;
         }catch (e){
             return rejectWithValue(e.message)
