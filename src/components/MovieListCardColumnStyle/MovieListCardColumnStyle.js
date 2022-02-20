@@ -40,4 +40,4 @@ const MovieListCardColumnStyle = ({data}) => {
     );
 };
 
-export default MovieListCardColumnStyle;
+export {MovieListCardColumnStyle};

@@ -24,9 +24,9 @@ export const getMovie = createAsyncThunk(
 
 export const getMovieByGenre = createAsyncThunk(
     'movie/getMovieByGenre',
-    async ({genre,pageNumber}, {rejectWithValue}) => {
+    async ({genre,pageNumber,primary_release_year}, {rejectWithValue}) => {
         try {
-            const movieListByGenre = await moviesService.getAll({genre,pageNumber})
+            const movieListByGenre = await moviesService.getAll({genre,pageNumber,primary_release_year})
             return movieListByGenre
         } catch (e) {
             return rejectWithValue(e.message)

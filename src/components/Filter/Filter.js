@@ -1,12 +1,14 @@
 import React from 'react';
 
 import './Filter.css'
-import {RenderStyle} from "../RenderStyle/RenderStyle";
+
+import {ChangeYear,RenderStyle} from "../index";
 
 const Filter = () => {
     return (
         <div className={'filter'}>
             Filter
+            <ChangeYear/>
             <RenderStyle/>
         </div>
     );

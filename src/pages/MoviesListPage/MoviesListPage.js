@@ -11,22 +11,21 @@ import {pageFromParams, restartPage} from "../../store/local.slice";
 const MoviesListPage = () => {
 
     const {movie} = useSelector(state => state.movieList)
+    const {filmByYear}=useSelector(state => state.localChange)
+
     const dispatch = useDispatch()
 
     const [searchParams] = useSearchParams({})
     let page = searchParams.get('page')
-    let year = searchParams.get('year')
 
     useEffect(() => {
         if (page === null) {
             dispatch(restartPage())
             page=1
         }
-        if(year===null){
-            year=''
-        }
-        dispatch(getMovie({pageNumber:page,primary_release_year:year}))
-    }, [page,year]);
+
+        dispatch(getMovie({pageNumber:page,primary_release_year:filmByYear}))
+    }, [page,filmByYear]);
 
     useEffect(()=>{
         if(page){

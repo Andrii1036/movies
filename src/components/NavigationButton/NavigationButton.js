@@ -10,10 +10,10 @@ const NavigationButton = () => {
     const dispatch = useDispatch()
 
     const [searchParams, setSearchParams] = useSearchParams({})
+    const currentParams = Object.fromEntries([...searchParams]);
 
     useEffect(() => {
-        const currentParams = Object.fromEntries([...searchParams]);
-        setSearchParams({...currentParams, page: pageNumber})
+            setSearchParams({...currentParams, page: pageNumber})
     }, [pageNumber])
 
     return (

@@ -7,6 +7,7 @@ import './FilmDetailPage.css'
 import {getById} from "../../store";
 import {imageBaseUrl} from "../../config/urls";
 import {GenresItemName} from "../../components";
+import {changeYear} from "../../store/local.slice";
 
 const FilmsDetailsPage = () => {
 
@@ -62,7 +63,9 @@ const FilmsDetailsPage = () => {
                     </div>
                     <div id={'filmInfo'} className={'filmInfo'}>
                         <h2>{title}
-                            <Link to={`/?year=${data.year}`}>
+                            <Link to={`/`} onClick={()=>{
+                                dispatch(changeYear(data.year))
+                            }}>
                                 <span>({data.year})</span>
                             </Link>
                         </h2>

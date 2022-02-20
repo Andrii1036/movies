@@ -1,10 +1,10 @@
 import React from 'react';
+import {useSelector} from "react-redux";
 
 import './MoviesList.css';
 
-import {MovieListCard} from "../MovieLictCard/MovieListCard";
-import {useSelector} from "react-redux";
-import MovieListCardColumnStyle from "../MovieListCardColumnStyle/MovieListCardColumnStyle";
+import {MovieListCard,MovieListCardColumnStyle} from "../index";
+
 
 const MoviesList = ({movie}) => {
 

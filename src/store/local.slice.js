@@ -2,7 +2,8 @@ import {createSlice} from "@reduxjs/toolkit";
 
 const initialState = {
     pageNumber: 1,
-    renderStyle:'row'
+    renderStyle: 'row',
+    filmByYear: null
 }
 
 export const localChangeSlice = createSlice({
@@ -10,29 +11,35 @@ export const localChangeSlice = createSlice({
     initialState,
     reducers: {
         nextPage: (state) => {
-            state.pageNumber+=1
+            state.pageNumber += 1
         },
         prevPage: (state) => {
-        state.pageNumber-=1
+            state.pageNumber -= 1
         },
-        restartPage:(state)=>{
-            state.pageNumber=1
+        restartPage: (state) => {
+            state.pageNumber = 1
         },
-        pageFromParams:(state,action)=>{
-            state.pageNumber=action.payload
+        pageFromParams: (state, action) => {
+            state.pageNumber = action.payload
         },
-        rowStyle:(state)=>{
-            state.renderStyle='row'
+        rowStyle: (state) => {
+            state.renderStyle = 'row'
         },
-        columnStyle:(state)=>{
-            state.renderStyle='column'
+        columnStyle: (state) => {
+            state.renderStyle = 'column'
+        },
+        changeYear:(state,action)=>{
+            state.filmByYear=action.payload
+            console.log(action.payload);
         }
 
     }
 })
 
-export const {nextPage,prevPage,restartPage,pageFromParams,rowStyle,columnStyle}=localChangeSlice.actions
+export const {
+    nextPage, prevPage, restartPage, pageFromParams, rowStyle,columnStyle,changeYear
+} = localChangeSlice.actions
 
-const localChangeReducer= localChangeSlice.reducer
+const localChangeReducer = localChangeSlice.reducer
 
 export default localChangeReducer

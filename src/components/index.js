@@ -9,4 +9,6 @@ export * from './MovieLictCard/MovieListCard';
 export * from './NavigationButton/NavigationButton';
 export * from './GenresItemName/GenresItemName';
 export * from './Filter/Filter';
-export * from './RenderStyle/RenderStyle'
+export * from './RenderStyle/RenderStyle';
+export * from './ChangeYear/ChangeYear';
+export * from './MovieListCardColumnStyle/MovieListCardColumnStyle'
