@@ -3,12 +3,13 @@ import {endpoint} from "../config/urls";
 import {apiKey} from "../config/apiKey";
 
 const moviesService = {
-    getAll: ({language, genre, pageNumber,primary_release_year}) => axiosMovieService.get(`${endpoint.discover}${endpoint.movie}?api_key=${apiKey}`, {
+    getAll: ({language, genre, pageNumber,primary_release_year,sort_by}) => axiosMovieService.get(`${endpoint.discover}${endpoint.movie}?api_key=${apiKey}`, {
         params: {
             language: language,
             with_genres: genre,
             page:pageNumber,
-            primary_release_year:primary_release_year
+            primary_release_year:primary_release_year,
+            sort_by:sort_by
         }
     }).then(value => value.data),
     getByName: ({name, language}) => axiosMovieService.get(`${endpoint.search}${endpoint.movie}?api_key=${apiKey}&query=${name}`, {

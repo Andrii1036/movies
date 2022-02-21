@@ -7,6 +7,7 @@ const NavigationButton = () => {
 
     const {totalPages} = useSelector(state => state.movieList)
     const {pageNumber} = useSelector(state => state.localChange)
+
     const dispatch = useDispatch()
 
     const [searchParams, setSearchParams] = useSearchParams({})

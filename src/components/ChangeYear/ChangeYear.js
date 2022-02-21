@@ -13,7 +13,7 @@ const ChangeYear = () => {
     useEffect(() => {
         const select = document.getElementById('changeYear')
 
-        for (let i = 2022; i >= 1900; i--) {
+        for (let i = 2022; i >=1874; i--) {
             let option = document.createElement('option')
             option.value = i
             option.innerText = i

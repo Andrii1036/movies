@@ -12,4 +12,6 @@ export * from './Filter/Filter';
 export * from './RenderStyle/RenderStyle';
 export * from './ChangeYear/ChangeYear';
 export * from './MovieListCardColumnStyle/MovieListCardColumnStyle';
-export * from './ChangeLanguage/ChangeLanguage'
+export * from './ChangeLanguage/ChangeLanguage';
+export * from './SortByReleaseDate/SortByReleaseDate';
+export * from './SortVariable/SortVariable'

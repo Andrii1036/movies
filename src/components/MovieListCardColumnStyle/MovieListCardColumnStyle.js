@@ -15,7 +15,7 @@ const MovieListCardColumnStyle = ({data}) => {
         const imageBlock = document.getElementById(`movieListCardColumnStyle_image${id}`)
         imageBlock.style.backgroundImage = `url("${imageBaseUrl}/w185/${poster_path}")`
 
-    }, []);
+    }, [poster_path]);
 
     return (
         <Link to={`/movie/${transliterate(filmName)}-${id}`} state={id}>

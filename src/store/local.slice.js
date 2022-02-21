@@ -4,7 +4,8 @@ const initialState = {
     pageNumber: 1,
     renderStyle: 'row',
     filmByYear: null,
-    language:'en'
+    language:'en',
+    sort_by:null
 }
 
 export const localChangeSlice = createSlice({
@@ -31,17 +32,19 @@ export const localChangeSlice = createSlice({
         },
         changeYear:(state,action)=>{
             state.filmByYear=action.payload
-            console.log(action.payload);
         },
         changeLanguage :(state,action)=>{
             state.language=action.payload
+        },
+        sort:(state,action)=>{
+            state.sort_by=action.payload
         }
 
     }
 })
 
 export const {
-    nextPage, prevPage, restartPage, pageFromParams, rowStyle,columnStyle,changeYear,changeLanguage
+    nextPage, prevPage, restartPage, pageFromParams, rowStyle,columnStyle,changeYear,changeLanguage,sort
 } = localChangeSlice.actions
 
 const localChangeReducer = localChangeSlice.reducer

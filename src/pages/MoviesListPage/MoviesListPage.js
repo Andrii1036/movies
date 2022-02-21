@@ -13,6 +13,7 @@ const MoviesListPage = () => {
     const {movie} = useSelector(state => state.movieList)
     const {filmByYear}=useSelector(state => state.localChange)
     const{language}=useSelector(state => state.localChange)
+    const{sort_by}=useSelector(state => state.localChange)
 
     const dispatch = useDispatch()
 
@@ -25,8 +26,8 @@ const MoviesListPage = () => {
             page=1
         }
 
-        dispatch(getMovie({pageNumber:page,primary_release_year:filmByYear,language}))
-    }, [page,filmByYear,language]);
+        dispatch(getMovie({pageNumber:page,primary_release_year:filmByYear,language,sort_by}))
+    }, [page,filmByYear,language,sort_by]);
 
     useEffect(()=>{
         if(page){

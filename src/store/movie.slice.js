@@ -13,9 +13,9 @@ const initialState = {
 
 export const getMovie = createAsyncThunk(
     'movie/getMovie',
-    async ({pageNumber,primary_release_year,language}, {rejectWithValue}) => {
+    async ({pageNumber,primary_release_year,language,sort_by}, {rejectWithValue}) => {
         try {
-            const movieList = await moviesService.getAll({pageNumber,primary_release_year,language})
+            const movieList = await moviesService.getAll({pageNumber,primary_release_year,language,sort_by})
             return movieList
         } catch (e) {
             return rejectWithValue(e.message)
@@ -25,9 +25,9 @@ export const getMovie = createAsyncThunk(
 
 export const getMovieByGenre = createAsyncThunk(
     'movie/getMovieByGenre',
-    async ({genre,pageNumber,primary_release_year,language}, {rejectWithValue}) => {
+    async ({genre,pageNumber,primary_release_year,language,sort_by}, {rejectWithValue}) => {
         try {
-            const movieListByGenre = await moviesService.getAll({genre,pageNumber,primary_release_year,language})
+            const movieListByGenre = await moviesService.getAll({genre,pageNumber,primary_release_year,language,sort_by})
             return movieListByGenre
         } catch (e) {
             return rejectWithValue(e.message)
@@ -61,7 +61,12 @@ export const getByYear=createAsyncThunk(
 export const movieSlice = createSlice({
     name: 'movie',
     initialState,
-    reducers: {},
+    reducers: {
+        reloadSingleMovie:(state)=>{
+            state.singleMovie={}
+            state.singleMovieStatus=null
+        }
+    },
     extraReducers: {
         [getMovie.pending]: (state) => {
             state.status = 'pending'
@@ -98,5 +103,5 @@ export const movieSlice = createSlice({
 });
 
 const movieReducer = movieSlice.reducer
-
+export const {reloadSingleMovie}=movieSlice.actions
 export default movieReducer

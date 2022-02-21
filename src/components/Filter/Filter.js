@@ -2,12 +2,12 @@ import React from 'react';
 
 import './Filter.css'
 
-import {ChangeYear,RenderStyle} from "../index";
+import {ChangeYear, RenderStyle, SortVariable} from "../index";
 
 const Filter = () => {
     return (
         <div className={'filter'}>
-            Filter
+            <SortVariable/>
             <ChangeYear/>
             <RenderStyle/>
         </div>

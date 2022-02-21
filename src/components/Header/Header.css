@@ -1,8 +1,9 @@
 .header{
-    width: 100%;
+    width: 1200px;
     position: fixed;
     top: 0;
-    left: 0;
+    left: 50%;
+    transform: translateX(calc(-50% - 8px));
     height: 70px;
     background: rgba(0,0,0,0.7);
     padding: 0 20px;

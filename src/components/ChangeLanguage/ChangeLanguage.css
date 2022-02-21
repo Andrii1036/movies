@@ -28,8 +28,8 @@
     width: 170px;
     padding-left: 40px;
     display: flex;
-    background: no-repeat 10px center;
-    background-size: contain;
+    background: url("../../../image/flag-en.png") no-repeat left center;
+    background-size: 30px;
 }
 #uk{
     background: url("../../../image/flag-uk.png") no-repeat 10px center;
@@ -42,4 +42,13 @@
 #ru{
     background: url("../../../image/flag-ru.png") no-repeat 10px center;
     background-size: contain;
+}
+.uk{
+    background: url("../../../image/flag-uk.png") no-repeat left center;
+}
+.ru{
+    background: url("../../../image/flag-ru.png") no-repeat left center;
+}
+.en{
+    background: url("../../../image/flag-en.png") no-repeat left center;
 }

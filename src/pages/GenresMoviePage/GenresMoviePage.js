@@ -12,12 +12,13 @@ const GenresMoviePage = () => {
     const {movie} = useSelector(state => state.movieList)
     const {filmByYear} = useSelector(state => state.localChange)
     const{language}=useSelector(state => state.localChange)
+    const{sort_by}=useSelector(state => state.localChange)
+
     const dispatch = useDispatch()
 
-    let [searchParams, setSearchParams] = useSearchParams()
+    let [searchParams] = useSearchParams()
 
     let page = searchParams.get('page')
-
     let {genre} = useParams()
     let {state} = useLocation()
     let genreId = null
@@ -33,8 +34,8 @@ const GenresMoviePage = () => {
         if (page === null) {
             dispatch(restartPage())
         }
-        dispatch(getMovieByGenre({genre: genreId, pageNumber: page, primary_release_year: filmByYear,language}))
-    }, [genre, page, filmByYear,language]);
+        dispatch(getMovieByGenre({genre: genreId, pageNumber: page, primary_release_year: filmByYear,language,sort_by}))
+    }, [genre, page, filmByYear,language,sort_by]);
 
     useEffect(() => {
         if (page) {

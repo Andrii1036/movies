@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {useDispatch} from "react-redux";
 
 import './ChangeLanguage.css'
@@ -14,27 +14,29 @@ const ChangeLanguage = () => {
         languageVariable.classList.toggle('active')
     }
 
-    const activeLanguage=(value)=>{
+    const activeLanguage = (value) => {
         dispatch(changeLanguage(value))
         const languageSwitcher = document.getElementById('languageSwitcher')
-        languageSwitcher.style.backgroundImage=`url("../../../image/flag-${value}.png")`
+        languageSwitcher.classList.remove('uk', 'ru', 'en')
+        languageSwitcher.classList.add(`${value}`)
         showLanguageItems()
     }
 
-    useEffect(() => {
-        const languageSwitcher = document.getElementById('languageSwitcher')
-        languageSwitcher.addEventListener('click', showLanguageItems, true)
-    }, [])
-
     return (
         <div id={'languageWrapper'} className={'languageWrapper'}>
-            <div id={'languageSwitcher'} className={'languageSwitcher'}>
-                <p className={'activeLanguage'}>Змінити мову <span>{'\u2bc6'}</span></p>
+            <div onClick={()=>showLanguageItems()} id={'languageSwitcher'} className={'languageSwitcher'}>
+                <p className={'activeLanguage'}>Змінити мову<span>{'\u2bc6'}</span></p>
             </div>
             <div id={'languageVariable'} className={'languageVariable'}>
-                <p onClick={()=>{activeLanguage('en')}} id={'en'}>Англійська</p>
-                <p onClick={()=>{activeLanguage('uk')}} id={'uk'}>Українська</p>
-                <p onClick={()=>{activeLanguage('ru')}} id={'ru'}>Російська</p>
+                <p onClick={() => {
+                    activeLanguage('en')
+                }} id={'en'}>Англійська</p>
+                <p onClick={() => {
+                    activeLanguage('uk')
+                }} id={'uk'}>Українська</p>
+                <p onClick={() => {
+                    activeLanguage('ru')
+                }} id={'ru'}>Російська</p>
             </div>
         </div>
     );

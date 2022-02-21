@@ -5,7 +5,7 @@ import {apiKey} from "../config/apiKey";
 const genreService = {
     getAll: ({language}) => axiosMovieService.get(`${endpoint.genre}${endpoint.movie}/list?api_key=${apiKey}`, {
         params: {
-            language: language
+            language: language,
         }
     }).then(value => value.data.genres)
 }

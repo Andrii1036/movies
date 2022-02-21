@@ -1,14 +1,16 @@
 import React, {useEffect} from 'react';
 import {Link} from "react-router-dom";
 import {transliterate} from "transliteration";
+import StarRatings from "react-star-ratings/build/star-ratings";
 
 import './MovieListCard.css'
 
 import {imageBaseUrl} from "../../config/urls";
 import {GenresItemName} from "../GenresItemName/GenresItemName";
-import StarRatings from "react-star-ratings/build/star-ratings";
+
 
 const MovieListCard = ({data}) => {
+
     const {title, id, poster_path, overview, release_date, genre_ids,vote_average} = data;
     const filmName = title.split(' ').join('')
     let year ='-'
@@ -18,8 +20,7 @@ const MovieListCard = ({data}) => {
     useEffect(() => {
         const imageBlock = document.getElementById(`movieListCard_image${id}`)
         imageBlock.style.backgroundImage = `url("${imageBaseUrl}/w185/${poster_path}")`
-
-    }, []);
+    }, [poster_path]);
 
     return (
         <div className={'movieListCard'}>
